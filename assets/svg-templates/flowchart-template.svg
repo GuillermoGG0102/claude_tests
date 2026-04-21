@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="600" viewBox="0 0 500 600">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#333333" />
+    </marker>
+    <style>
+      .step-label { font-size: 16px; font-weight: bold; fill: white; font-family: Arial, sans-serif; text-anchor: middle; }
+      .step-desc { font-size: 12px; fill: white; font-family: Arial, sans-serif; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="250" y="30" style="font-size: 24px; font-weight: bold; fill: #0066CC; font-family: Arial, sans-serif; text-anchor: center;">
+    Flowchart Template
+  </text>
+
+  <!-- Start node -->
+  <ellipse cx="250" cy="80" rx="40" ry="25" fill="#00AA00" stroke="#006600" stroke-width="2"/>
+  <text x="250" y="88" class="step-label">Start</text>
+
+  <!-- Arrow down -->
+  <line x1="250" y1="105" x2="250" y2="135" stroke="#333333" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Process 1 -->
+  <rect x="170" y="135" width="160" height="60" rx="5" fill="#0066CC" stroke="#003D99" stroke-width="2"/>
+  <text x="250" y="160" class="step-label">Process 1</text>
+  <text x="250" y="180" class="step-desc">Description</text>
+
+  <!-- Arrow down -->
+  <line x1="250" y1="195" x2="250" y2="225" stroke="#333333" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Decision diamond -->
+  <polygon points="250,225 310,270 250,315 190,270" fill="#FF6600" stroke="#CC4400" stroke-width="2"/>
+  <text x="250" y="275" class="step-label" style="font-size: 13px;">Decision?</text>
+
+  <!-- Arrow left (No) -->
+  <line x1="190" y1="270" x2="100" y2="270" stroke="#333333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="145" y="265" style="font-size: 11px; fill: #333333; font-family: Arial, sans-serif;">No</text>
+
+  <!-- Process 2a (left) -->
+  <rect x="20" y="240" width="160" height="60" rx="5" fill="#9933FF" stroke="#6600CC" stroke-width="2"/>
+  <text x="100" y="265" class="step-label">Process 2a</text>
+  <text x="100" y="285" class="step-desc">Alt path</text>
+
+  <!-- Arrow right (Yes) -->
+  <line x1="310" y1="270" x2="400" y2="270" stroke="#333333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="355" y="265" style="font-size: 11px; fill: #333333; font-family: Arial, sans-serif;">Yes</text>
+
+  <!-- Process 2b (right) -->
+  <rect x="320" y="240" width="160" height="60" rx="5" fill="#3399FF" stroke="#0066CC" stroke-width="2"/>
+  <text x="400" y="265" class="step-label">Process 2b</text>
+  <text x="400" y="285" class="step-desc">Main path</text>
+
+  <!-- Arrows converge -->
+  <line x1="100" y1="300" x2="250" y2="360" stroke="#333333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="400" y1="300" x2="250" y2="360" stroke="#333333" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Process 3 -->
+  <rect x="170" y="360" width="160" height="60" rx="5" fill="#00CCCC" stroke="#0099CC" stroke-width="2"/>
+  <text x="250" y="385" class="step-label">Process 3</text>
+  <text x="250" y="405" class="step-desc">Final step</text>
+
+  <!-- Arrow down -->
+  <line x1="250" y1="420" x2="250" y2="450" stroke="#333333" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- End node -->
+  <ellipse cx="250" cy="490" rx="40" ry="25" fill="#FF3366" stroke="#CC0033" stroke-width="2"/>
+  <text x="250" y="498" class="step-label">End</text>
+
+  <!-- Footer -->
+  <text x="250" y="570" style="font-size: 11px; fill: #666666; font-family: Arial, sans-serif; text-anchor: center;">
+    Edit this template to create your flowchart. Update text, add/remove steps as needed.
+  </text>
+</svg>

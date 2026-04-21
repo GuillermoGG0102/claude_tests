@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="250" viewBox="0 0 800 250">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#0066CC" />
+    </marker>
+    <style>
+      .step-label { font-size: 16px; font-weight: bold; fill: white; font-family: Arial, sans-serif; text-anchor: middle; }
+      .description { font-size: 12px; fill: #555555; font-family: Arial, sans-serif; text-anchor: middle; }
+      .arrow-text { font-size: 11px; fill: #0066CC; font-family: Arial, sans-serif; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="400" y="30" style="font-size: 24px; font-weight: bold; fill: #0066CC; font-family: Arial, sans-serif; text-anchor: middle;">
+    SVG Infographic Workflow
+  </text>
+
+  <!-- Step 1: Describe -->
+  <rect x="20" y="70" width="130" height="80" rx="8" fill="#00AA00" stroke="#006600" stroke-width="2"/>
+  <text x="85" y="110" class="step-label">1. Describe</text>
+  <text x="85" y="135" class="description">What do you</text>
+  <text x="85" y="148" class="description">want?</text>
+
+  <!-- Arrow 1 -->
+  <line x1="150" y1="110" x2="210" y2="110" stroke="#0066CC" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="180" y="105" class="arrow-text">Ask Claude</text>
+
+  <!-- Step 2: Generate -->
+  <rect x="210" y="70" width="130" height="80" rx="8" fill="#FF6600" stroke="#CC4400" stroke-width="2"/>
+  <text x="275" y="110" class="step-label">2. Generate</text>
+  <text x="275" y="135" class="description">Claude creates</text>
+  <text x="275" y="148" class="description">SVG code</text>
+
+  <!-- Arrow 2 -->
+  <line x1="340" y1="110" x2="400" y2="110" stroke="#0066CC" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="370" y="105" class="arrow-text">Copy code</text>
+
+  <!-- Step 3: Save -->
+  <rect x="400" y="70" width="130" height="80" rx="8" fill="#3399FF" stroke="#0066CC" stroke-width="2"/>
+  <text x="465" y="110" class="step-label">3. Save</text>
+  <text x="465" y="135" class="description">Run helper</text>
+  <text x="465" y="148" class="description">script</text>
+
+  <!-- Arrow 3 -->
+  <line x1="530" y1="110" x2="590" y2="110" stroke="#0066CC" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="560" y="105" class="arrow-text">Paste code</text>
+
+  <!-- Step 4: View -->
+  <rect x="590" y="70" width="130" height="80" rx="8" fill="#9933FF" stroke="#6600CC" stroke-width="2"/>
+  <text x="655" y="110" class="step-label">4. View</text>
+  <text x="655" y="135" class="description">Open in</text>
+  <text x="655" y="148" class="description">browser</text>
+
+  <!-- Arrow 4 (optional) -->
+  <line x1="655" y1="150" x2="655" y2="190" stroke="#00CCCC" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 5: Edit (optional) -->
+  <rect x="590" y="190" width="130" height="40" rx="8" fill="#00CCCC" stroke="#0099CC" stroke-width="2" opacity="0.7"/>
+  <text x="655" y="215" class="step-label" style="fill: #0066CC; font-size: 14px;">5. Edit (optional)</text>
+
+  <!-- Bottom info -->
+  <text x="400" y="235" class="description" style="font-size: 13px;">
+    Total time: ~5 minutes. No setup required. Uses only Python stdlib.
+  </text>
+</svg>

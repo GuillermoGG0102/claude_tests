@@ -32,9 +32,8 @@ A structured repository for developing, testing, and documenting Claude skills a
 ### Prerequisites
 - Claude Code installed
 - Python 3.8+ (for scripts)
-- OpenRouter API key (for image generation)
 
-### Setup
+### Quick Start: Create SVG Infographics (Free!)
 
 1. **Clone the repository**
    ```bash
@@ -42,49 +41,68 @@ A structured repository for developing, testing, and documenting Claude skills a
    cd claude_tests
    ```
 
-2. **Configure environment** (if using image generation)
-   ```bash
-   cp .env.example .env
-   # Add your OpenRouter API key to .env
+2. **Ask Claude for SVG code**
+   ```
+   "Create an SVG flowchart showing a simple process with 3 steps.
+    Use professional colors and make it 500x400 pixels."
    ```
 
-3. **Install dependencies** (if needed)
+3. **Save with SVG generator** (no dependencies needed!)
    ```bash
-   pip install -r requirements.txt  # if it exists
+   python scripts/svg_generator.py my_infographic.svg
+   # Paste Claude's SVG code when prompted
    ```
+
+4. **Open in browser**
+   ```bash
+   open my_infographic.svg
+   ```
+
+✅ That's it! No API keys, no costs, completely free vector graphics.
+
+See [docs/SVG_QUICK_START.md](docs/SVG_QUICK_START.md) for more examples.
 
 ## 📚 Key Directories
 
 ### `scripts/`
 Executable Python scripts and utilities. Keep implementations under 500 lines where possible.
 
-Example:
+Examples:
 ```bash
-python scripts/generate_image.py "A beautiful sunset"
+python scripts/svg_generator.py my_infographic.svg    # Save SVG code to files
 ```
 
 ### `references/`
 Documentation, guides, and how-tos. Includes:
 - Skill creation guides
+- SVG infographic guides
 - API documentation
 - Setup instructions
 - Troubleshooting guides
 
 ### `assets/`
 Static files including:
+- SVG templates for quick creation
 - Icons and images
 - JSON templates
 - Sample data
 - Configuration templates
 
 ### `examples/`
-Working examples of skills and implementations
+Working examples of skills and infographics:
+- SVG infographic samples
+- Skill implementations
+- Project structure diagrams
 
 ### `tests/`
 Unit tests and integration tests for validating code
+- Test suite for SVG generator
 
 ### `docs/`
-Additional documentation beyond references
+Additional documentation:
+- SVG workflow guide
+- SVG quick start guide
+- Contributing guidelines
 
 ## 🛠️ Creating a Skill
 
@@ -107,10 +125,17 @@ Claude will automatically follow instructions in `CLAUDE.md` when working on thi
 
 ## 📖 Documentation
 
+### Skills Development
 - [CLAUDE.md](CLAUDE.md) — Project rules and instructions
-- [references/SKILLS.md](references/SKILLS.md) — How to create skills
+- [references/SKILLS.md](references/SKILLS.md) — How to create Claude skills
 - [references/PROJECT_STRUCTURE.md](references/PROJECT_STRUCTURE.md) — Detailed structure guide
-- [CLAUDE_SKILLS_INFOGRAPHIC.md](CLAUDE_SKILLS_INFOGRAPHIC.md) — Visual guide
+- [CLAUDE_SKILLS_INFOGRAPHIC.md](CLAUDE_SKILLS_INFOGRAPHIC.md) — Visual guide to creating skills
+
+### SVG Infographics (Free, No APIs)
+- [references/SVG_INFOGRAPHICS.md](references/SVG_INFOGRAPHICS.md) — Comprehensive SVG technical guide
+- [docs/SVG_WORKFLOW.md](docs/SVG_WORKFLOW.md) — Complete step-by-step workflow
+- [docs/SVG_QUICK_START.md](docs/SVG_QUICK_START.md) — 5-minute quick start guide
+- [examples/](examples/) — Working SVG examples (project-structure, workflow, timeline)
 
 ## 🔧 Configuration
 

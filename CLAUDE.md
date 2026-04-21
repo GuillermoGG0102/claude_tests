@@ -1,103 +1,110 @@
-# CLAUDE.md — Frontend IMAGE Rules
+# CLAUDE.md — Project Rules & Guidelines
+
+## Key Capabilities
+
+This project supports creating professional infographics using **two approaches**:
+
+### 🎨 SVG Infographics (Recommended - Free & Professional)
+- **No API costs, no dependencies, no setup required**
+- Creates scalable vector graphics that work everywhere
+- Use Claude to generate SVG code, save with `scripts/svg_generator.py`
+- Perfect for: flowcharts, timelines, diagrams, organizational charts, architectures
+
+### 📸 Image Generation (Optional - API-based)
+- Uses OpenRouter API (costs apply)
+- For photos, illustrations, artwork
+- For technical diagrams, use SVG instead
 
 ## Always Do First
-- **Invoke the `frontend-design` skill** before writing any frontend code, every session, no exceptions.
+
+When the user needs any kind of infographic or visual:
+1. **Ask if they want professional vector graphics or photos/illustrations**
+2. **Default to SVG** — it's free, scalable, and professional
+3. **Only use image generation** if they specifically request photos, artwork, or illustrations
 
 
 ---
-name: generate-image
-description: Generate or edit images using AI models (FLUX, Gemini). Use for general-purpose image generation including photos, illustrations, artwork, visual assets, concept art, and any image that isn't a technical diagram or schematic. For flowcharts, circuits, pathways, and technical diagrams, use the scientific-schematics skill instead.
+
+## Creating SVG Infographics (5 Minutes)
+
+**Perfect for**: Flowcharts, timelines, diagrams, organization charts, process flows, architectures
+
+### Step-by-Step
+
+1. **Describe your infographic** (plain English is fine):
+   ```
+   "Create a flowchart showing user registration process with 4 steps.
+    Use professional blue and green colors.
+    Make it 500x400 pixels."
+   ```
+
+2. **I'll generate SVG code** - you copy it
+
+3. **Save using helper script** - no setup needed:
+   ```bash
+   python scripts/svg_generator.py my_diagram.svg
+   # Paste the SVG code I provided
+   ```
+
+4. **Open in browser** - done!
+   ```bash
+   open my_diagram.svg
+   ```
+
+### Common Infographic Types
+
+**Flowchart**
+```
+"Create an SVG flowchart with:
+- Start/End nodes (circles)
+- Process boxes (rectangles)
+- Decision diamond
+- Connecting arrows
+- Labels for each step"
+```
+
+**Timeline**
+```
+"Create a 5-milestone timeline showing project progress.
+Alternate points above and below the timeline line.
+Use blue primary color and include dates and descriptions."
+```
+
+**Organization Chart**
+```
+"Create an org chart with CEO at top,
+3 directors below, 2 managers under each director.
+Use boxes connected by lines. Professional style."
+```
+
+**System Architecture**
+```
+"Create a microservices architecture diagram showing:
+- Client layer, API Gateway, 4 microservices, database
+- Arrows showing data flow
+- Labels for each component"
+```
+
+### Documentation & Examples
+
+- **Quick Start** (5 min): [docs/SVG_QUICK_START.md](docs/SVG_QUICK_START.md)
+- **Full Workflow** (detailed): [docs/SVG_WORKFLOW.md](docs/SVG_WORKFLOW.md)
+- **Technical Reference**: [references/SVG_INFOGRAPHICS.md](references/SVG_INFOGRAPHICS.md)
+- **Working Examples**: `/examples/*.svg` (project-structure, workflow, timeline)
+- **Templates**: `/assets/svg-templates/` (infographic, flowchart, timeline)
+
+### Key Advantages
+
+✅ **Zero Cost** - No API keys or subscriptions
+✅ **No Dependencies** - Uses only Python stdlib
+✅ **Professional Quality** - Scalable vectors, infinite zoom
+✅ **Easy Editing** - Edit in free tools (Inkscape, Figma) or text editor
+✅ **Portable** - Works in any browser, any device
+✅ **Version Control** - Text-based, git-friendly
+
 ---
 
-# Generate Image
-
-Generate and edit high-quality images using OpenRouter's image generation models including FLUX.2 Pro and Gemini 3 Pro.
-
-## When to Use This Skill
-
-**Use generate-image for:**
-- Photos and photorealistic images
-- Artistic illustrations and artwork
-- Concept art and visual concepts
-- Visual assets for presentations or documents
-- Image editing and modifications
-- Any general-purpose image generation needs
-
-**Use scientific-schematics instead for:**
-- Flowcharts and process diagrams
-- Circuit diagrams and electrical schematics
-- Biological pathways and signaling cascades
-- System architecture diagrams
-- CONSORT diagrams and methodology flowcharts
-- Any technical/schematic diagrams
-
-## Quick Start
-
-Use the `scripts/generate_image.py` script to generate or edit images:
-
-```bash
-# Generate a new image
-python scripts/generate_image.py "A beautiful sunset over mountains"
-
-# Edit an existing image
-python scripts/generate_image.py "Make the sky purple" --input photo.jpg
-```
-
-This generates/edits an image and saves it as `generated_image.png` in the current directory.
-
-## API Key Setup
-
-**CRITICAL**: The script requires an OpenRouter API key. Before running, check if the user has configured their API key:
-
-1. Look for a `.env` file in the project directory or parent directories
-2. Check for `OPENROUTER_API_KEY=<key>` in the `.env` file
-3. If not found, inform the user they need to:
-   - Create a `.env` file with `OPENROUTER_API_KEY=your-api-key-here`
-   - Or set the environment variable: `export OPENROUTER_API_KEY=your-api-key-here`
-   - Get an API key from: https://openrouter.ai/keys
-
-The script will automatically detect the `.env` file and provide clear error messages if the API key is missing.
-
-## Model Selection
-
-**Default model**: `google/gemini-3-pro-image-preview` (high quality, recommended)
-
-**Available models for generation and editing**:
-- `google/gemini-3-pro-image-preview` - High quality, supports generation + editing
-- `black-forest-labs/flux.2-pro` - Fast, high quality, supports generation + editing
-
-**Generation only**:
-- `black-forest-labs/flux.2-flex` - Fast and cheap, but not as high quality as pro
-
-Select based on:
-- **Quality**: Use gemini-3-pro or flux.2-pro
-- **Editing**: Use gemini-3-pro or flux.2-pro (both support image editing)
-- **Cost**: Use flux.2-flex for generation only
-
-## Common Usage Patterns
-
-### Basic generation
-```bash
-python scripts/generate_image.py "Your prompt here"
-```
-
-### Specify model
-```bash
-python scripts/generate_image.py "A cat in space" --model "black-forest-labs/flux.2-pro"
-```
-
-### Custom output path
-```bash
-python scripts/generate_image.py "Abstract art" --output artwork.png
-```
-
-### Edit an existing image
-```bash
-python scripts/generate_image.py "Make the background blue" --input photo.jpg
-```
-
-### Edit with a specific model
-```bash
+# Image Generation (Optional - API-based)
 python scripts/generate_image.py "Add sunglasses to the person" --input portrait.png --model "black-forest-labs/flux.2-pro"
 ```
 
