@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Create Claude Skills - Interactive Infographic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 18px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .emoji-large {
+            font-size: 64px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* Main Content */
+        .content {
+            padding: 60px 40px;
+        }
+
+        /* Size Constraint Section */
+        .size-constraint {
+            text-align: center;
+            margin-bottom: 80px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .size-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 40px 60px;
+            border-radius: 20px;
+            font-size: 48px;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.3);
+            transform: scale(1);
+            transition: transform 0.3s ease;
+        }
+
+        .size-badge:hover {
+            transform: scale(1.05);
+        }
+
+        .size-text {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* Grid Sections */
+        .grid-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            grid-column: 1 / -1;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title .emoji {
+            font-size: 40px;
+        }
+
+        /* Cards */
+        .card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: hover;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .card.mandatory {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #e0e7ff 0%, #f3f4f6 100%);
+        }
+
+        .card.optional {
+            border-color: #764ba2;
+            background: linear-gradient(135deg, #f3e7ff 0%, #f9f5ff 100%);
+        }
+
+        .card-label {
+            font-weight: 700;
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-desc {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .card-example {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #667eea;
+            border-left: 3px solid #667eea;
+            overflow-x: auto;
+        }
+
+        /* Directory Structure */
+        .directory-section {
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .directory-tree {
+            background: linear-gradient(135deg, #f0f4ff 0%, #f0f9ff 100%);
+            padding: 30px;
+            border-radius: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #333;
+            border: 2px solid #667eea;
+        }
+
+        .tree-item {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .tree-item::before {
+            content: '├ ';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+
+        .tree-item.folder {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .tree-item.file {
+            color: #666;
+        }
+
+        .tree-item.desc {
+            color: #999;
+            font-size: 12px;
+            font-style: italic;
+            padding-left: 40px;
+        }
+
+        /* Best Practices */
+        .practices-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .practice-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 12px;
+            border-left: 4px solid #00aa00;
+            transition: all 0.3s ease;
+        }
+
+        .practice-item:hover {
+            background: linear-gradient(135deg, #e0f2fe 0%, #cce5ff 100%);
+            transform: translateX(5px);
+        }
+
+        .checkmark {
+            font-size: 24px;
+            color: #00aa00;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .practice-text {
+            font-size: 14px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* Example Section */
+        .example-section {
+            background: linear-gradient(135deg, #f0f4ff 0%, #f3e7ff 100%);
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border: 2px solid #667eea;
+        }
+
+        .example-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .example-code {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #667eea;
+            overflow-x: auto;
+            line-height: 1.8;
+        }
+
+        .code-line {
+            margin-bottom: 8px;
+        }
+
+        .code-key {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .code-value {
+            color: #764ba2;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .footer-text {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .grid-section {
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
+
+        .practices-grid {
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .example-section {
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 40px 20px;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .content {
+                padding: 40px 20px;
+            }
+
+            .grid-section {
+                grid-template-columns: 1fr;
+            }
+
+            .practices-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .size-badge {
+                font-size: 32px;
+                padding: 30px 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <span class="emoji-large">🛠️</span>
+            <h1>How to Create Claude Skills</h1>
+            <p>A comprehensive guide to building powerful AI capabilities</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <!-- Size Constraint -->
+            <div class="size-constraint">
+                <div class="size-badge">&lt; 500 LINES</div>
+                <p class="size-text">Keep your skill code concise, focused, and maintainable</p>
+            </div>
+
+            <!-- Mandatory Fields -->
+            <div class="grid-section">
+                <div class="section-title">
+                    <span class="emoji">⭐</span>
+                    Mandatory Fields (Required)
+                </div>
+
+                <div class="card mandatory">
+                    <div class="card-label">📝 name</div>
+                    <div class="card-desc">Concise identifier for your skill</div>
+                    <div class="card-example">
+"code-review"<br>
+"image-generator"<br>
+"api-debugger"
+                    </div>
+                </div>
+
+                <div class="card mandatory">
+                    <div class="card-label">📖 description</div>
+                    <div class="card-desc">What the skill does (its expertise)</div>
+                    <div class="card-example">
+"Analyzes code for bugs,<br>
+performance, and best<br>
+practices"
+                    </div>
+                </div>
+            </div>
+
+            <!-- Optional Fields -->
+            <div class="grid-section">
+                <div class="section-title">
+                    <span class="emoji">💡</span>
+                    Optional Fields (Customize)
+                </div>
+
+                <div class="card optional">
+                    <div class="card-label">🔧 allowed-tools</div>
+                    <div class="card-desc">Tools your skill can access</div>
+                    <div class="card-example">
+["bash", "read",<br>
+"grep", "github"]
+                    </div>
+                </div>
+
+                <div class="card optional">
+                    <div class="card-label">🤖 model</div>
+                    <div class="card-desc">Claude model for this skill</div>
+                    <div class="card-example">
+"claude-opus-4-7"<br>
+"claude-sonnet-4-6"
+                    </div>
+                </div>
+            </div>
+
+            <!-- Directory Structure -->
+            <div class="directory-section">
+                <div class="section-title">
+                    <span class="emoji">📁</span>
+                    Recommended Directory Structure
+                </div>
+                <div class="directory-tree">
+                    <div class="tree-item folder">my-skill/</div>
+                    <div class="tree-item file">├ skill.md <span class="desc">(Skill definition with metadata)</span></div>
+                    <div class="tree-item file">├ scripts/ <span class="desc">(Executable code)</span></div>
+                    <div class="tree-item file" style="padding-left: 40px;">├ main.py, helper.py, utils.py</div>
+                    <div class="tree-item file">├ references/ <span class="desc">(Documentation)</span></div>
+                    <div class="tree-item file" style="padding-left: 40px;">├ API_GUIDE.md, EXAMPLES.md</div>
+                    <div class="tree-item file">└ assets/ <span class="desc">(Images, templates, data)</span></div>
+                    <div class="tree-item file" style="padding-left: 40px;">├ icon.png, template.json</div>
+                </div>
+            </div>
+
+            <!-- Best Practices -->
+            <div class="directory-section">
+                <div class="section-title">
+                    <span class="emoji">✅</span>
+                    Best Practices
+                </div>
+                <div class="practices-grid">
+                    <div class="practice-item">
+                        <div class="checkmark">✓</div>
+                        <div class="practice-text">Focus on <strong>ONE primary task</strong></div>
+                    </div>
+                    <div class="practice-item">
+                        <div class="checkmark">✓</div>
+                        <div class="practice-text">Write <strong>clear, descriptive</strong> names</div>
+                    </div>
+                    <div class="practice-item">
+                        <div class="checkmark">✓</div>
+                        <div class="practice-text">Only specify <strong>tools if needed</strong></div>
+                    </div>
+                    <div class="practice-item">
+                        <div class="checkmark">✓</div>
+                        <div class="practice-text"><strong>Organize code</strong> logically</div>
+                    </div>
+                    <div class="practice-item">
+                        <div class="checkmark">✓</div>
+                        <div class="practice-text"><strong>Document</strong> with examples</div>
+                    </div>
+                    <div class="practice-item">
+                        <div class="checkmark">✓</div>
+                        <div class="practice-text">Stay <strong>under 500 lines</strong></div>
+                    </div>
+                    <div class="practice-item">
+                        <div class="checkmark">✓</div>
+                        <div class="practice-text">Make <strong>reusable & composable</strong></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example -->
+            <div class="example-section">
+                <div class="example-title">📋 Complete Example: Code Review Skill</div>
+                <div class="example-code">
+                    <div class="code-line"><span class="code-key">name:</span> <span class="code-value">code-review</span></div>
+                    <div class="code-line"><span class="code-key">description:</span> <span class="code-value">Analyzes code for bugs, performance</span></div>
+                    <div class="code-line"><span class="code-key">              </span><span class="code-value">issues, and best practices</span></div>
+                    <div class="code-line"></div>
+                    <div class="code-line"><span class="code-key">allowed-tools:</span></div>
+                    <div class="code-line"><span class="code-key">  -</span> <span class="code-value">bash</span></div>
+                    <div class="code-line"><span class="code-key">  -</span> <span class="code-value">read</span></div>
+                    <div class="code-line"><span class="code-key">  -</span> <span class="code-value">grep</span></div>
+                    <div class="code-line"></div>
+                    <div class="code-line"><span class="code-key">model:</span> <span class="code-value">claude-opus-4-7</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-text">
+                🚀 Ready to create your first skill? Start with the mandatory fields and build from there!
+            </div>
+            <button class="cta-button">Get Started Building Skills →</button>
+        </div>
+    </div>
+</body>
+</html>
