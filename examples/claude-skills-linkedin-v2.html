@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Create Claude Skills</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .infographic {
+            width: 1080px;
+            height: 1200px;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header - BIG and Bold */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            flex: 0 0 auto;
+        }
+
+        .header-emoji {
+            font-size: 80px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .header h1 {
+            font-size: 60px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .header p {
+            font-size: 24px;
+            font-weight: 500;
+            opacity: 0.95;
+        }
+
+        /* Content */
+        .content {
+            flex: 1;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Key Stats */
+        .key-stat {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .stat-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px 50px;
+            border-radius: 40px;
+            display: inline-block;
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .stat-text {
+            font-size: 18px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        /* Three Steps - LARGE and Bold */
+        .steps {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .step {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+            padding: 30px;
+            border-radius: 16px;
+            border: 3px solid #667eea;
+            text-align: center;
+        }
+
+        .step-num {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 800;
+            margin: 0 auto 15px;
+        }
+
+        .step-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .step-content {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        /* Footer CTA */
+        .footer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 35px;
+            text-align: center;
+            border-radius: 16px;
+            margin-top: 20px;
+        }
+
+        .footer-emoji {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .footer-text {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .footer-subtext {
+            font-size: 18px;
+            font-weight: 500;
+            opacity: 0.95;
+        }
+
+        /* Responsive for smaller screens */
+        @media (max-width: 1100px) {
+            .infographic {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic">
+        <!-- Header -->
+        <div class="header">
+            <span class="header-emoji">🛠️</span>
+            <h1>How to Create<br>Claude Skills</h1>
+            <p>Complete Guide in 3 Steps</p>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Key Stat -->
+            <div class="key-stat">
+                <div class="stat-badge">&lt; 500</div>
+                <div class="stat-text">LINES OF CODE</div>
+            </div>
+
+            <!-- Three Steps -->
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-title">Define</div>
+                    <div class="step-content">
+                        <strong>name</strong> - Skill ID<br>
+                        <strong>description</strong> - What it does
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-title">Organize</div>
+                    <div class="step-content">
+                        <strong>scripts/</strong> - Code<br>
+                        <strong>references/</strong> - Docs<br>
+                        <strong>assets/</strong> - Files
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-title">Customize</div>
+                    <div class="step-content">
+                        <strong>allowed-tools</strong><br>
+                        <strong>model</strong> - Claude version
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer CTA -->
+            <div class="footer">
+                <div class="footer-emoji">🚀</div>
+                <div class="footer-text">Ready to Build?</div>
+                <div class="footer-subtext">Start creating your skill today!</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -10,7 +10,7 @@ const path = require('path');
 const fs = require('fs');
 
 async function htmlToScreenshot() {
-  const htmlFile = path.resolve('examples/claude-skills-linkedin.html');
+  const htmlFile = path.resolve('examples/claude-skills-linkedin-v2.html');
   const outputFile = path.resolve('examples/claude-skills-infographic.png');
 
   console.log('📸 Launching browser...');
@@ -23,11 +23,11 @@ async function htmlToScreenshot() {
   try {
     const page = await browser.newPage();
 
-    // Set viewport to 600px wide (LinkedIn optimized)
+    // Set viewport to 1080px (optimal for LinkedIn infographics)
     await page.setViewport({
-      width: 600,
-      height: 1400,
-      deviceScaleFactor: 2  // 2x for better quality
+      width: 1080,
+      height: 1200,
+      deviceScaleFactor: 2  // 2x for crisp quality
     });
 
     console.log('🌐 Loading HTML file...');
