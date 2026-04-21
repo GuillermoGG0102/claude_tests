@@ -10,7 +10,7 @@ const path = require('path');
 const fs = require('fs');
 
 async function htmlToScreenshot() {
-  const htmlFile = path.resolve('examples/claude-skills-linkedin-v2.html');
+  const htmlFile = path.resolve('examples/claude-skills-linkedin-v3.html');
   const outputFile = path.resolve('examples/claude-skills-infographic.png');
 
   console.log('📸 Launching browser...');
@@ -38,9 +38,9 @@ async function htmlToScreenshot() {
       return document.documentElement.scrollHeight;
     });
 
-    // Adjust viewport to actual content
+    // Adjust viewport to actual content (keep 1080px wide)
     await page.setViewport({
-      width: 600,
+      width: 1080,
       height: height,
       deviceScaleFactor: 2
     });
@@ -52,7 +52,7 @@ async function htmlToScreenshot() {
     });
 
     console.log(`✅ PNG saved: ${outputFile}`);
-    console.log(`📊 Dimensions: 600 x ${height}px (2x quality)`);
+    console.log(`📊 Dimensions: 1080 x ${height}px (2x quality)`);
     console.log('📤 Ready for LinkedIn!');
 
   } catch (error) {
