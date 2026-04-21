@@ -1,5 +1,57 @@
 # CLAUDE.md — Project Rules & Guidelines
 
+---
+
+## 🎨 Brand Assets & Identity
+
+**CRITICAL**: Always check the `assets/brand/` folder before designing any infographic or visual. Your brand identity for all infographics is TNK Project.
+
+### Brand Asset Requirements
+- **Logo**: Use TNK eye symbol (64px+ minimum size)
+- **Colors**: Only use TNK palette — never use default/generic colors
+  - Primary: Cyan Eléctrico `#00CCFF`
+  - Secondary: Verde Neón `#00FFB3`
+  - Tertiary: Violeta `#B77FFF`
+  - Base: Dark Navy `#0f1419` or `#1a1f2e`
+- **Typography**: Space Grotesque (headlines), Inter (body), JetBrains Mono (code)
+- **Full Guide**: [assets/brand/BRAND_GUIDE.md](assets/brand/BRAND_GUIDE.md)
+
+### Anti-Generic Guardrails
+**Colors**: Never use default Tailwind palette (indigo, blue, etc.). Pick TNK brand colors or derive from them.
+
+**Shadows**: Never use flat `shadow-md`. Always layer with color tinting:
+```css
+box-shadow: 0 0 20px rgba(0, 204, 255, 0.2), 0 8px 24px rgba(0, 0, 0, 0.2);
+```
+
+**Typography**: Never use the same font for headings and body.
+- Headings: Space Grotesque with `-0.04em` tracking
+- Body: Inter with `1.7` line-height
+- Code: JetBrains Mono
+
+**Gradients**: Layer multiple radial gradients. Add subtle SVG noise filter (0.03–0.08 opacity) for depth.
+
+**Animations**: Only animate `transform` and `opacity`. Never use `transition-all`. Use spring easing: `cubic-bezier(0.34, 1.56, 0.64, 1)`
+
+**Interactive States**: Every clickable element must have:
+- Hover (scale + glow)
+- Focus-visible (cyan border outline)
+- Active (scale down + enhanced shadow)
+- Disabled (50% opacity)
+
+**Images**: Always add gradient overlay `linear-gradient(180deg, rgba(15, 20, 25, 0.4), rgba(0, 0, 0, 0.6))` + color treatment layer with `mix-blend-multiply`.
+
+**Spacing**: Use intentional tokens, not random steps:
+- xs: 4px | sm: 8px | md: 12px | lg: 16px | xl: 24px | 2xl: 32px | 3xl: 48px | 4xl: 64px
+
+**Depth**: Surfaces must layer properly:
+- Base: #0f1419 (background)
+- Surface: #252d3d (cards)
+- Elevated: With cyan/violeta glow
+- Floating: Maximum elevation (modals, tooltips)
+
+---
+
 ## Key Capabilities
 
 This project supports creating professional infographics using **two approaches**:

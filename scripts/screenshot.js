@@ -10,7 +10,7 @@ const path = require('path');
 const fs = require('fs');
 
 async function htmlToScreenshot() {
-  const htmlFile = path.resolve('examples/claude-skills-linkedin-v3.html');
+  const htmlFile = path.resolve('examples/claude-skills-linkedin-v4.html');
   const outputFile = path.resolve('examples/claude-skills-infographic.png');
 
   console.log('📸 Launching browser...');
