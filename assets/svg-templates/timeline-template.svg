@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="300" viewBox="0 0 700 300">
+  <defs>
+    <style>
+      .year { font-size: 18px; font-weight: bold; fill: #0066CC; font-family: Arial, sans-serif; text-anchor: middle; }
+      .label { font-size: 14px; font-weight: bold; fill: #333333; font-family: Arial, sans-serif; text-anchor: middle; }
+      .description { font-size: 12px; fill: #666666; font-family: Arial, sans-serif; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="350" y="30" style="font-size: 24px; font-weight: bold; fill: #0066CC; font-family: Arial, sans-serif; text-anchor: center;">
+    Timeline Template
+  </text>
+
+  <!-- Main timeline line -->
+  <line x1="50" y1="100" x2="650" y2="100" stroke="#0066CC" stroke-width="3"/>
+
+  <!-- Timeline Point 1 - Top -->
+  <circle cx="100" cy="100" r="12" fill="#0066CC" stroke="#003D99" stroke-width="2"/>
+  <circle cx="100" cy="100" r="6" fill="white"/>
+  <text x="100" y="140" class="year">Point 1</text>
+  <text x="100" y="160" class="label">Milestone 1</text>
+  <text x="100" y="176" class="description">Description</text>
+
+  <!-- Timeline Point 2 - Bottom -->
+  <circle cx="200" cy="100" r="12" fill="#00AA00" stroke="#006600" stroke-width="2"/>
+  <circle cx="200" cy="100" r="6" fill="white"/>
+  <text x="200" y="50" class="year">Point 2</text>
+  <text x="200" y="32" class="label">Milestone 2</text>
+  <text x="200" y="16" class="description">Description</text>
+
+  <!-- Timeline Point 3 - Top -->
+  <circle cx="300" cy="100" r="12" fill="#FF6600" stroke="#CC4400" stroke-width="2"/>
+  <circle cx="300" cy="100" r="6" fill="white"/>
+  <text x="300" y="140" class="year">Point 3</text>
+  <text x="300" y="160" class="label">Milestone 3</text>
+  <text x="300" y="176" class="description">Description</text>
+
+  <!-- Timeline Point 4 - Bottom -->
+  <circle cx="400" cy="100" r="12" fill="#9933FF" stroke="#6600CC" stroke-width="2"/>
+  <circle cx="400" cy="100" r="6" fill="white"/>
+  <text x="400" y="50" class="year">Point 4</text>
+  <text x="400" y="32" class="label">Milestone 4</text>
+  <text x="400" y="16" class="description">Description</text>
+
+  <!-- Timeline Point 5 - Top -->
+  <circle cx="500" cy="100" r="12" fill="#3399FF" stroke="#0066CC" stroke-width="2"/>
+  <circle cx="500" cy="100" r="6" fill="white"/>
+  <text x="500" y="140" class="year">Point 5</text>
+  <text x="500" y="160" class="label">Milestone 5</text>
+  <text x="500" y="176" class="description">Description</text>
+
+  <!-- Timeline Point 6 - Bottom (optional) -->
+  <circle cx="600" cy="100" r="12" fill="#00CCCC" stroke="#0099CC" stroke-width="2"/>
+  <circle cx="600" cy="100" r="6" fill="white"/>
+  <text x="600" y="50" class="year">Point 6</text>
+  <text x="600" y="32" class="label">Milestone 6</text>
+  <text x="600" y="16" class="description">Description</text>
+
+  <!-- Footer -->
+  <line x1="50" y1="230" x2="650" y2="230" stroke="#EEEEEE" stroke-width="1"/>
+  <text x="350" y="260" style="font-size: 12px; fill: #666666; font-family: Arial, sans-serif; text-anchor: center;">
+    Alternate points between top and bottom for visual interest. Edit colors, labels, and descriptions.
+  </text>
+</svg>
