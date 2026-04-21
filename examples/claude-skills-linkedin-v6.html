@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Create Claude Skills - Practical Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0f1419;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .infographic {
+            width: 1080px;
+            background: linear-gradient(180deg, #1a1f2e 0%, #0f1419 100%);
+            display: flex;
+            flex-direction: column;
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(0, 204, 255, 0.1);
+            border: 1px solid rgba(0, 204, 255, 0.1);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #00CCFF 0%, #00FFB3 100%);
+            color: #0f1419;
+            padding: 45px 40px;
+            text-align: center;
+        }
+
+        .header-emoji {
+            font-size: 64px;
+            margin-bottom: 12px;
+        }
+
+        .header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 44px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 8px;
+            letter-spacing: -0.04em;
+        }
+
+        .header p {
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* Content */
+        .content {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        /* Core Principle */
+        .principle-box {
+            background: linear-gradient(135deg, rgba(0, 204, 255, 0.1) 0%, rgba(0, 255, 179, 0.05) 100%);
+            padding: 28px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 204, 255, 0.2);
+            text-align: center;
+        }
+
+        .principle-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            color: #e0e0e0;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .principle-text {
+            font-size: 14px;
+            color: #9ca3af;
+            line-height: 1.8;
+        }
+
+        .principle-highlight {
+            color: #00CCFF;
+            font-weight: 600;
+        }
+
+        /* Two Column Section */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+
+        /* Structure Box */
+        .structure-card {
+            background: linear-gradient(135deg, rgba(0, 204, 255, 0.08) 0%, rgba(0, 255, 179, 0.04) 100%);
+            padding: 28px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 204, 255, 0.15);
+            box-shadow: 0 4px 12px rgba(0, 204, 255, 0.06);
+        }
+
+        .card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            color: #e0e0e0;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-icon {
+            font-size: 24px;
+        }
+
+        .structure-item {
+            margin-bottom: 16px;
+            padding: 12px;
+            background: rgba(0, 204, 255, 0.05);
+            border-radius: 6px;
+            border-left: 3px solid #00CCFF;
+        }
+
+        .item-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: #00CCFF;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .item-content {
+            font-size: 13px;
+            color: #e0e0e0;
+            line-height: 1.5;
+        }
+
+        .optional-tag {
+            display: inline-block;
+            background: rgba(183, 127, 255, 0.2);
+            color: #B77FFF;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-top: 6px;
+            font-weight: 600;
+        }
+
+        /* Code Example */
+        .code-block {
+            background: rgba(15, 20, 25, 0.8);
+            border: 1px solid rgba(0, 204, 255, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        .code-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            color: #00FFB3;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .code-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: #e0e0e0;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .code-comment {
+            color: #6b7280;
+        }
+
+        .code-key {
+            color: #00CCFF;
+        }
+
+        .code-value {
+            color: #00FFB3;
+        }
+
+        /* Directory Structure */
+        .directory-box {
+            background: linear-gradient(135deg, rgba(0, 204, 255, 0.08) 0%, rgba(0, 255, 179, 0.04) 100%);
+            padding: 24px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 204, 255, 0.15);
+        }
+
+        .directory-tree {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: #e0e0e0;
+            line-height: 1.8;
+        }
+
+        .dir-folder {
+            color: #00CCFF;
+            font-weight: 600;
+        }
+
+        .dir-file {
+            color: #e0e0e0;
+        }
+
+        /* Key Points */
+        .key-points {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .key-point {
+            background: linear-gradient(135deg, rgba(0, 204, 255, 0.08) 0%, rgba(0, 255, 179, 0.04) 100%);
+            padding: 18px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 204, 255, 0.15);
+        }
+
+        .key-point-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: #e0e0e0;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .key-point-text {
+            font-size: 13px;
+            color: #9ca3af;
+            line-height: 1.5;
+        }
+
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, #00CCFF 0%, #00FFB3 100%);
+            color: #0f1419;
+            padding: 36px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0, 204, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cta-emoji {
+            font-size: 44px;
+            margin-bottom: 12px;
+        }
+
+        .cta-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 6px;
+            letter-spacing: -0.04em;
+        }
+
+        .cta-sub {
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-emoji">🛠️</div>
+            <h1>How to Create Claude Skills</h1>
+            <p>Simple, focused approach for building effective AI capabilities</p>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Core Principle -->
+            <div class="principle-box">
+                <div class="principle-title">🎯 The Core Principle</div>
+                <div class="principle-text">
+                    Have a <span class="principle-highlight">clear picture</span> of what task your skill will do.
+                    Understand it so well you can explain it in <span class="principle-highlight">less than 500 lines of text</span>.
+                    Write code that matches that understanding.
+                </div>
+            </div>
+
+            <!-- Mandatory & Directory -->
+            <div class="two-column">
+                <!-- Left: Mandatory Structure -->
+                <div class="structure-card">
+                    <div class="card-title">
+                        <span class="card-icon">📋</span>
+                        Mandatory Elements
+                    </div>
+
+                    <div class="structure-item">
+                        <div class="item-label">name</div>
+                        <div class="item-content">Unique identifier. Example: <code style="color: #00FFB3;">pr-description</code></div>
+                    </div>
+
+                    <div class="structure-item">
+                        <div class="item-label">description</div>
+                        <div class="item-content">What it does and when to use it. Clear, specific purpose.</div>
+                    </div>
+
+                    <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(0, 204, 255, 0.1);">
+                        <div class="card-title" style="margin-bottom: 12px;">
+                            <span class="card-icon">⚙️</span>
+                            Optional Elements
+                        </div>
+
+                        <div class="structure-item">
+                            <div class="item-label">allowed-tools</div>
+                            <div class="item-content">Tools the skill can use. Only specify if needed.</div>
+                            <span class="optional-tag">Add Only If Required</span>
+                        </div>
+
+                        <div class="structure-item">
+                            <div class="item-label">model</div>
+                            <div class="item-content">Specific Claude model. Only if different from default.</div>
+                            <span class="optional-tag">Add Only If Required</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Code Example -->
+                <div>
+                    <div class="code-block">
+                        <span class="code-label">skill.md Format</span>
+                        <div class="code-text"><span class="code-comment">---</span>
+<span class="code-key">name:</span> <span class="code-value">pr-description</span>
+<span class="code-key">description:</span> <span class="code-value">Writes pull request descriptions.</span>
+                        <span class="code-value">Use when creating a PR, writing a PR,</span>
+                        <span class="code-value">or when user asks to summarize changes.</span>
+<span class="code-comment">---</span>
+
+<span class="code-comment"># PR Description Skill</span>
+
+When writing a PR description:
+
+1. Run `git diff main...HEAD`
+2. Write description:
+
+## What
+[One sentence]
+
+## Why
+[Brief context]
+
+## Changes
+- Bullet points
+- Group related changes</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Directory Structure -->
+            <div class="directory-box">
+                <div class="card-title">
+                    <span class="card-icon">📁</span>
+                    Directory Structure
+                </div>
+                <div class="directory-tree">
+<span class="dir-folder">skill-name/</span>
+├── <span class="dir-file">skill.md</span>              ← Metadata & instructions
+├── <span class="dir-folder">scripts/</span>
+│   └── <span class="dir-file">implementation.py</span>  ← Your code
+├── <span class="dir-folder">references/</span>
+│   └── <span class="dir-file">README.md</span>           ← Documentation
+└── <span class="dir-folder">assets/</span>
+    └── <span class="dir-file">sample_data.txt</span>   ← Test data
+                </div>
+            </div>
+
+            <!-- Key Points -->
+            <div class="key-points">
+                <div class="key-point">
+                    <div class="key-point-title">💡 Understand Your Task</div>
+                    <div class="key-point-text">Before writing code, be crystal clear about what the skill does and how it should behave.</div>
+                </div>
+                <div class="key-point">
+                    <div class="key-point-title">📏 Under 500 Lines</div>
+                    <div class="key-point-text">Keep code focused and maintainable. One clear purpose. Not multi-purpose.</div>
+                </div>
+                <div class="key-point">
+                    <div class="key-point-title">✍️ Transmit Your Vision</div>
+                    <div class="key-point-text">Describe your skill so clearly others (and future you) understand it immediately.</div>
+                </div>
+                <div class="key-point">
+                    <div class="key-point-title">🎯 Single Purpose</div>
+                    <div class="key-point-text">One skill = one clear task. If it does multiple things, split into separate skills.</div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta">
+                <div class="cta-emoji">🚀</div>
+                <div class="cta-text">Ready to Build?</div>
+                <div class="cta-sub">Start with a clear understanding of your task, then build code to match</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
